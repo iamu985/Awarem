@@ -1,0 +1,29 @@
+{% extends 'users/base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+Login 
+{% endblock title %}
+
+{% block content %}
+<form class="box my-6" method="POST">
+    <div class="content">
+        <h1>Sign In</h1>
+    </div>
+    <hr>
+    {% csrf_token %}
+    <div class="field">
+        <label class="label">Username</label>
+        {{ login_form.username | add_class:'input' }}
+    </div>
+    <div class="field">
+        <label class="label">Password</label>
+        {{ login_form.username | add_class:'input' }}
+    </div>
+    <button class="button is-outlined my-3" type="submit">Sign In</button>
+    <div class="content">
+        <a href="{% url 'users:register' %}">Register</a> to create an account.
+    </div>
+</form>
+
+{% endblock content %}
