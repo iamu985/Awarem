@@ -1,0 +1,60 @@
+{% extends 'main/base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+Create Post
+{% endblock title %}
+
+{% block content %}
+<div class="columns mt-4">
+    <!-- SECOND COLUMN -->
+    {% include 'main/includes/navbar.html' %}
+    <div class="column">
+        
+        <!-- PETITION SECTION -->
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="tile is-ancestor my-3 mx-3">
+                <div class="tile is-child box">
+                    <h1 class="subtitle is-size-4">Profile Update</h1>
+                    <div class="field">
+                        <label class="label">Profile Picture</label>
+                        {{ profile_update_form.profile_picture }}
+                    </div>
+                    <div class="field">
+                        <label class="label">First Name</label>
+                        {{ user_update_form.first_name | add_class:'input' }}
+                    </div>
+                    <div class="field">
+                        <label class="label">Last Name</label>
+                        {{ user_update_form.last_name | add_class:'input' }}
+                    </div>
+                    <div class="field">
+                        <label class="label">Username</label>
+                        {{ user_update_form.username | add_class:'input' }}
+                    </div>
+                    <div class="field">
+                        <label class="label">Email</label>
+                        {{ user_update_form.email | add_class:'input' }}
+                    </div>
+                    <div class="field">
+                        <label class="label">Bio</label>
+                        {{ profile_update_form.bio | add_class:'textarea' }}
+                    </div>
+                    <button class="button my-2" type="submit">Update</button>
+            
+                </div>
+            </div>
+        </form>
+        <!-- POSTS SECTION -->
+        <!-- VIEWING OF POSTS -->
+
+        </div>
+        <!-- THIRD COLUMN -->
+        <!-- WILD CARD SEARCH SECTION-->
+        {% include 'main/includes/sidesection.html' %}
+    </div>
+    
+</div>
+{% endblock content %}
+       

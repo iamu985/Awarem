@@ -1,0 +1,85 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+Dashboard
+{% endblock title %}
+
+{% block content %}
+<div class="columns mt-4">
+  {% include 'main/includes/navbar.html' %}
+    <!-- SECOND COLUMN -->
+    <div class="column">
+        <!-- PETITION SECTION -->
+        <div class="tile is-ancestor my-3 mx-3">
+            <div class="tile is-child box">
+                <h1 class="subtitle is-size-4">Start your petition and watch it grow!</h1>
+                <textarea class="textarea" placeholder="Legalization of Marijuana?"></textarea>
+                <button class="button my-2">Sign up for petition</button>
+                
+            </div>
+        </div>
+        <!-- POSTS SECTION -->
+        <!-- VIEWING OF POSTS -->
+        {% for post in user.post.all %}
+        <div class="tile is-ancestor my-3 mx-3">
+          <div class="tile is-child box">
+                  <div class="columns">
+                      <div class="column is-1">
+                          <figure class="image is-48x48">
+                              <img class="is-rounded" src="{{user.profile.profile_picture.url}}">
+                            </figure>
+                      </div>
+                      <div class="column">
+                          <div class="content">
+                              <h4>{{post.user.username}}</h4><span>{{post.date_published}}<span>
+                              <h2>{{post.title}}</h2>
+                              <p>{{post.body}}</p>
+                          </div>
+                          <div class="level is-mobile">
+                              <div class="level-item has-text-centered">
+                                <div>
+                                  <a href="#likes" class="heading">comment</a>
+                                  <p>0</p>
+                                </div>
+                              </div>
+                              <div class="level-item has-text-centered">
+                                <div>
+                                  <a href="#likes" class="heading">like</a>
+                                  <p>{{post.upvote}}</p>
+                                </div>
+                              </div>
+                              <div class="level-item has-text-centered">
+                                  <div>
+                                    <a href="#likes" class="heading">dislike</a>
+                                    <p>{{post.downvote}}</p>
+                                  </div>
+                                </div>
+                              <div class="level-item has-text-centered">
+                                <div>
+                                  <a href="#likes" class="heading">follow</a>
+                                  <p>0</p>
+                                </div>
+                              </div>
+                              <div class="level-item has-text-centered">
+                                <div>
+                                  <a href="#likes" class="heading">interested</a>
+                                  <p>0</p>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+          </div>
+      </div>
+      
+        {% endfor %}
+        </div>
+        <!-- THIRD COLUMN -->
+        <!-- WILD CARD SEARCH SECTION-->
+        {% include 'main/includes/sidesection.html' %}
+    </div>
+    
+</div>
+{% endblock content %}
+       

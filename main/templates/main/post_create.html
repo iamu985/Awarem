@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}
+Create Post
+{% endblock title %}
+
+{% block content %}
+<div class="columns mt-4">
+    {% include 'main/includes/navbar.html' %}
+    <!-- SECOND COLUMN -->
+    <div class="column">
+        
+        <!-- PETITION SECTION -->
+        <form method="POST">
+            {% csrf_token %}
+            <div class="tile is-ancestor my-3 mx-3">
+                <div class="tile is-child box">
+                    <h1 class="subtitle is-size-4">Create Your Post</h1>
+                    <div class="field">
+                        <label class="label">Title</label>
+                        {{ post_form.title | add_class:'input' }}
+                    </div>
+                    <div class="field">
+                        <label class="label">Content</label>
+                        {{ post_form.body | add_class:'textarea' }}
+                    </div>
+                    <div class="field">
+                        <label class="label">Type</label>
+                        {{ post_form.post_type | add_class:'select' }}
+                    </div>
+                    <button class="button my-2" type="submit">Create</button>
+            
+                </div>
+            </div>
+        </form>
+        <!-- POSTS SECTION -->
+        <!-- VIEWING OF POSTS -->
+
+        </div>
+        <!-- THIRD COLUMN -->
+        <!-- WILD CARD SEARCH SECTION-->
+        {% include 'main/includes/sidesection.html' %}
+    </div>
+    
+</div>
+{% endblock content %}
+       
