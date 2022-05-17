@@ -1,0 +1,58 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+{{user.username.get_full_name}}
+{% endblock title %}
+
+{% block content %}
+<div class="columns mt-4">
+    <div class="column is-one-fifth my-3 mx-3">
+    <a href="{% url 'main:dashboard' %}">
+        <div class="box my-2">
+            <p>Home</p>
+        </div>     
+    </a>    
+    <a href="{% url 'main:profile_update' %}">
+        <div class="box my-2">
+            <p>Profile</p>
+        </div>     
+    </a>
+    <a href="{% url 'main:create_post' %}">
+        <div class="box my-2 has-background-info">
+            <p class="has-text-white is-size-5">Post</p>
+        </div>     
+    </a>
+    </div>
+    <div class="column">
+        <div class="box">
+            <div class="is-flex is-justify-content-center">
+                <figure class="image is-128x128 my-3 is-justify-content-center">
+                    <img class="is-rounded" src="{{ user.profile.profile_picture.url }}">
+                  </figure>
+            </div>
+              <h6 class="has-text-centered">@{{ user.username }}</h6>
+              <h2 class="subtitle has-text-centered">{{ user.get_full_name }}</h2>
+              <hr>
+              <div class="content">
+                  <h2 class="subtitle">First Name</h2>
+                  <p>{{user.first_name}}</p>
+                  <h2 class="subtitle">Last Name</h2>
+                  <p>{{user.last_name}}</p>
+                  <h2 class="subtitle">Username</h2>
+                  <p>{{user.username}}</p>
+                  <h2 class="subtitle">Email</h2>
+                  <p>{{user.email}}</p>
+                  <h2 class="subtitle">Bio</h2>
+                  <p>{{user.profile.bio}}</p>
+              </div>
+              <a href="{% url 'main:profile_update' %}" class="button is-large">
+                  Update
+              </a>
+    </div>
+          
+          
+    </div>
+</div>
+
+
+{% endblock content %}
