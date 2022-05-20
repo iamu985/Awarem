@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Post, Preference
-from .forms import PostForm, UpdateProfileForm, UpdateUserForm
+from .forms import PostForm, UpdateProfileForm, UpdateUserForm, CreatePetitionForm
 from django.http import HttpResponse
 # Create your views here.
 
@@ -9,7 +9,13 @@ from django.http import HttpResponse
 def dashboard(request):
     user = request.user
     posts = Post.objects.all()
-    context = {"user":user, "posts":posts}
+    petition_form = CreatePetitionForm()
+    if request.method == "POST":
+        form = CreatePetitionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('polls:polls')
+    context = {"user":user, "posts":posts, 'petition_form':petition_form}
     return render(request, "main/dashboard.html", context)
 
 @login_required

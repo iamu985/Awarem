@@ -25,11 +25,17 @@
         <p>Logout</p>
     </div>     
 </a>
-<a href="{% url 'main:profile_view' %}">
+<a href="/admin/">
     <div class="box my-2">
         <p>Admin</p>
     </div>     
 </a>
+<a href="{% url 'polls:polls' %}">
+    <div class="box my-2">
+        <p>Polls</p>
+    </div>     
+</a>
+
 <a href="{% url 'main:create_post' %}">
     <div class="box my-2 has-background-info">
         <p class="has-text-white is-size-5">Post</p>

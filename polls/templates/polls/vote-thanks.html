@@ -1,0 +1,10 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Thank You!
+{% endblock title %}
+
+{% block content %}
+<h1 class="title">Thank You for Voting</h1>
+<h3>Visit <a href="{% url 'polls:result' %}">here</a> for results!</h3>
+{% endblock content %}

@@ -30,10 +30,12 @@ Create Post
                         {{ post_form.post_type | add_class:'select' }}
                     </div>
                     <button class="button my-2" type="submit">Create</button>
-            
+                    <h3 class="has-text-centered">Or create Petition <a href="{% url 'polls:petition-create' %}">here.</a></h3>
                 </div>
             </div>
+            
         </form>
+        
         <!-- POSTS SECTION -->
         <!-- VIEWING OF POSTS -->
 
