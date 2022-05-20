@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'main',
     'widget_tweaks',
     'tinymce',
+    'polls',
+    'voting'
 ]
 
 MIDDLEWARE = [

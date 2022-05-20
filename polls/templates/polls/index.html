@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}
+Polls
+{% endblock title %}
+
+{% block content %}
+<div class="columns mt-4">
+  {% include 'main/includes/navbar.html' %}
+    <!-- SECOND COLUMN -->
+    <div class="column">
+        <!-- POSTS SECTION -->
+        <!-- VIEWING OF POSTS -->
+        {% for poll in polls %}
+        <div class="tile is-ancestor my-3 mx-3">
+          <div class="tile is-child box">
+                  <a href="{% url 'polls:details' poll.id %}">{{ poll.question }}</a>
+          </div>
+      </div>
+      
+        {% endfor %}
+        </div>
+        <!-- THIRD COLUMN -->
+        <!-- WILD CARD SEARCH SECTION-->
+        {% include 'main/includes/sidesection.html' %}
+    </div>
+    
+</div>
+{% endblock content %}
+       

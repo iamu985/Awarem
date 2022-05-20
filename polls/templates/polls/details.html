@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}
+Petition Details
+{% endblock title %}
+
+{% block content %}
+<div class="columns mt-4">
+  {% include 'main/includes/navbar.html' %}
+    <!-- SECOND COLUMN -->
+    <div class="column">
+        <h1 class="title mt-3">{{poll.question}}</h1>
+        <!-- PETITION SECTION -->
+        <form action="{% url 'polls:vote' poll.id %}" method='POST'>
+            {% csrf_token %}
+            <input class="button" type="submit" name="choice" id="choice{{forloop.counter}}" value="upvote">
+            <input class="button" type="submit" name="choice" id="choice{{forloop.counter}}" value="downvote"> 
+        </form>
+        <!-- POSTS SECTION -->
+        <!-- VIEWING OF POSTS -->
+        <!-- THIRD COLUMN -->
+        <!-- WILD CARD SEARCH SECTION-->    
+</div>
+{% endblock content %}
+       

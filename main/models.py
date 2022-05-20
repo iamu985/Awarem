@@ -5,7 +5,6 @@ from django.utils import timezone
 
 class Post(models.Model):
     POST_TYPES  = (
-        ("P", "Petition"),
         ("E", "Event"),
         ("C", "Charity"),
     )

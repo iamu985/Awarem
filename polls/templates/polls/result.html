@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block title %}
+Petition Result
+{% endblock title %}
+
+{% block content %}
+<div class="columns mt-4">
+  {% include 'main/includes/navbar.html' %}
+    <!-- SECOND COLUMN -->
+    <div class="column">
+        <h1 class="title mt-3">{{poll.question}}</h1>
+        <!-- PETITION SECTION -->
+        <ul>
+            {% for key, value in result.items %} 
+              <h3>
+                  {% if key == 'score' %}
+                  <li>Score: {{value}}</li>
+                  {% endif %}
+                  {% if key == 'num_votes' %}
+                  <li>Total Votes: {{value}}</li>
+                  {% endif %}
+              </h3>
+              {% endfor %}
+        </ul>        
+</div>
+{% endblock content %}
+       

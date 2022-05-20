@@ -1,6 +1,6 @@
 {% extends 'main/base.html' %}
 {% load static %}
-
+{% load widget_tweaks %}
 {% block title %}
 Dashboard
 {% endblock title %}
@@ -11,14 +11,16 @@ Dashboard
     <!-- SECOND COLUMN -->
     <div class="column">
         <!-- PETITION SECTION -->
-        <div class="tile is-ancestor my-3 mx-3">
-            <div class="tile is-child box">
-                <h1 class="subtitle is-size-4">Start your petition and watch it grow!</h1>
-                <textarea class="textarea" placeholder="Legalization of Marijuana?"></textarea>
-                <button class="button my-2">Sign up for petition</button>
-                
-            </div>
-        </div>
+        <form action="{% url 'main:dashboard' %}" method="post">
+          {% csrf_token %}
+          <div class="tile is-ancestor my-3 mx-3">
+              <div class="tile is-child box">
+                  <h1 class="subtitle is-size-4">Start your petition and watch it grow!</h1>
+                  {{petition_form.question | add_class:'textarea' | attr:'placeholder:Legalization of Marijuana?'}}
+                  <button class="button my-2">Sign up for petition</button>
+              </div>
+          </div>
+        </form>
         <!-- POSTS SECTION -->
         <!-- VIEWING OF POSTS -->
         {% for post in user.post.all %}
